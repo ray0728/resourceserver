@@ -62,7 +62,7 @@ public class BlogController {
     }
 
     @PostMapping("new")
-    public String createNewLog(Principal principal) {
+    public String createNewLog(Principal principal, @RequestParam(name = "category") String category) {
         Account account = getOpAccount(principal);
         if (account == null) {
             return ResultInfo.assembleJson(ResultInfo.ErrType.NULLOBJ, ResultInfo.CODE_CREATE_NEW, "Invalid request parameters.");
@@ -71,6 +71,7 @@ public class BlogController {
         log.setUid(account.getUid());
         log.setDate(SimpleDate.getUTCTime());
         log.setStatus(Log.STATUS_EDITING);
+        log.setCategory(category);
         resourceService.createLog(log);
         return String.valueOf(log.getId());
     }

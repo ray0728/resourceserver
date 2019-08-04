@@ -82,9 +82,11 @@ public class ResourceService {
                 resourceMapper.deleteTagFromLog(tag.getMid(), tag.getId(), log.getId());
             }
         }
-        Category category = createNewCategory(log.getUid(), log.getCategory().getDesc());
-        log.getCategory().setCid(category.getCid());
-        log.getCategory().setId(category.getId());
+        if (log.getCategory() != null) {
+            Category category = createNewCategory(log.getUid(), log.getCategory().getDesc());
+            log.getCategory().setCid(category.getCid());
+            log.getCategory().setId(category.getId());
+        }
         return resourceMapper.changeLog(log);
     }
 
