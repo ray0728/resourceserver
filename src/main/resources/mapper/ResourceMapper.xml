@@ -68,8 +68,8 @@
     </insert>
 
     <insert id="createLog" useGeneratedKeys="true" keyProperty="id" parameterType="Log">
-        INSERT INTO t_log(uid, `date`, status)
-        VALUES (#{uid}, #{date}, #{status});
+        INSERT INTO t_log(uid, `type`, `date`, status)
+        VALUES (#{uid}, #{category.cid}, #{date}, #{status});
     </insert>
 
     <insert id="createReply" useGeneratedKeys="true" keyProperty="id" parameterType="Reply">

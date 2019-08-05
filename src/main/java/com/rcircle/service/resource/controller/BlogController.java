@@ -80,7 +80,7 @@ public class BlogController {
     public String updateLog(Principal principal,
                             @RequestParam(name = "id", required = true) int id,
                             @RequestParam(name = "title", required = false, defaultValue = "") String title,
-                            @RequestParam(name = "type", required = false, defaultValue = "") String category,
+                            @RequestParam(name = "category", required = false, defaultValue = "") String category,
                             @RequestParam(name = "gid", required = false, defaultValue = "0") int gid,
                             @RequestParam(name = "log", required = false, defaultValue = "") String htmllog,
                             @RequestParam(name = "tags", required = false, defaultValue = "") String[] tags,
