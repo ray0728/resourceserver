@@ -123,7 +123,7 @@
                 , t_tag_log_map.tid AS "tid"
             </when>
             <otherwise>
-                , "0" AS "tid"
+                , "0" AS 'tid'
             </otherwise>
         </choose>
         FROM t_log
