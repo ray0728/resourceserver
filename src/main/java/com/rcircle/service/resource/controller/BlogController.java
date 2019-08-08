@@ -220,7 +220,7 @@ public class BlogController {
                 streamService.asynCreateHLSFiles(log.getId(),
                         NetFile.getDirAbsolutePath(saveDir, filename),
                         NetFile.getDirAbsolutePath(saveDir, "hls", filename),
-                        "/blog/api/res/video/");
+                        "/api/res/blog/video/");
             }
         } catch (IOException e) {
             result = ResultInfo.assembleJson(ResultInfo.ErrType.INVALID, ResultInfo.CODE_UPLOAD_RES, e.getMessage());
