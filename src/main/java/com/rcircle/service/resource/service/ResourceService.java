@@ -126,7 +126,7 @@ public class ResourceService {
             List replies = resourceMapper.getLogReplies(log.getId());
             log.setReplies_count(replies == null ? 0 : replies.size());
             copyResFileToLog(log, "img");
-            copyResFileToLog(log, "video");
+            copyResFileToLog(log, "video" + File.separatorChar + "hls");
             copyResFileToLog(log, "cover");
         }
         return log;
