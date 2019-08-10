@@ -153,9 +153,7 @@ public class NetFile {
     }
 
     public static String translateLocalVideoFileToTsFile(String path, String tsname) {
-        File file = new File(path);
-        return String.format("%shls%s%s", file.getParent() + File.separatorChar,
-                File.separatorChar + file.getName() + File.separatorChar, tsname);
+        return path + File.separatorChar + tsname;
     }
 
 
