@@ -136,7 +136,7 @@ public class NetFile {
     public static Map<String, String> getFilesInfo(String dir, String subdir) {
         Map<String, String> fileInfoList = null;
         File root = new File(dir, subdir);
-        File[] files = root.listFiles(pathname -> pathname.isFile());
+        File[] files = root.listFiles();
         if (files != null) {
             for (File file : files) {
                 if (fileInfoList == null) {
