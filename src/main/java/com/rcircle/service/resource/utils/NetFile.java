@@ -149,9 +149,7 @@ public class NetFile {
     }
 
     public static String translateLocalVideoFileToHlsFile(String path) {
-        File file = new File(path);
-        return String.format("%shls%sindex.m3u8", file.getParent() + File.separatorChar,
-                File.separatorChar + file.getName() + File.separatorChar);
+        return path + File.separatorChar + "index.m3u8";
     }
 
     public static String translateLocalVideoFileToTsFile(String path, String tsname) {
