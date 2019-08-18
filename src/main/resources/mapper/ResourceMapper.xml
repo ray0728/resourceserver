@@ -45,7 +45,7 @@
     </select>
 
     <select id="getLogReplies" resultType="Reply">
-        SELECT id, lid, uid,guest_name AS username, guest_email AS email, `date`, `desc`
+        SELECT id, lid, uid,guest_name AS username, guest_email AS email, `date`, `desc`, avatar
         FROM t_reply
         WHERE lid = #{id}
     </select>
@@ -73,8 +73,8 @@
     </insert>
 
     <insert id="createReply" useGeneratedKeys="true" keyProperty="id" parameterType="Reply">
-        INSERT INTO t_reply(lid, uid, guest_name, guest_email, `desc`, `date`)
-        VALUES (#{lid}, #{uid}, #{username}, #{email}, #{desc}, #{date});
+        INSERT INTO t_reply(lid, uid, guest_name, guest_email, `desc`, `date`, avatar)
+        VALUES (#{lid}, #{uid}, #{username}, #{email}, #{desc}, #{date}, #{avatar});
     </insert>
 
     <delete id="deleteLog">

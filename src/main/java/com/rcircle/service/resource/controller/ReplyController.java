@@ -55,6 +55,7 @@ public class ReplyController {
         reply.setUid(uid);
         reply.setUsername(username);
         reply.setEmail(email);
+        reply.createRandomAvatar();
         resourceService.createReply(log, reply);
         return JSONObject.toJSONString(reply);
     }

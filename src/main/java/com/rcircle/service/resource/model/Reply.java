@@ -1,6 +1,7 @@
 package com.rcircle.service.resource.model;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class Reply implements Serializable {
     private int id;
@@ -10,6 +11,7 @@ public class Reply implements Serializable {
     private String email;
     private String desc;
     private long date;
+    private String avatar;
 
     public int getId() {
         return id;
@@ -65,5 +67,18 @@ public class Reply implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public void createRandomAvatar(){
+        Random random = new Random();
+        setAvatar("c" + random.nextInt(7) + 1);
     }
 }
