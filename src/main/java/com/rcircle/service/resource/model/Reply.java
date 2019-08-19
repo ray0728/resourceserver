@@ -79,6 +79,6 @@ public class Reply implements Serializable {
 
     public void createRandomAvatar(){
         Random random = new Random();
-        setAvatar("c" + random.nextInt(7) + 1);
+        setAvatar("c" + (random.nextInt(7) + 1));
     }
 }
