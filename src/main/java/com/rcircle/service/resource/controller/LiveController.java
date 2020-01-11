@@ -1,8 +1,7 @@
 package com.rcircle.service.resource.controller;
 
-import com.rcircle.service.resource.model.Log;
 import com.rcircle.service.resource.utils.NetFile;
-import com.rcircle.service.resource.utils.ResultInfo;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,25 +15,19 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.Map;
 
 @RestController
-@RequestMapping("/lab")
+@RequestMapping("/live")
 public class LiveController {
-    @GetMapping("live/{name}")
-    public ResponseEntity getVideoFile(Principal principal, @PathVariable("lid") int logid, @PathVariable("name") String name) {
-        Log log = resourceService.getLog(logid);
-        String errinfo = verifyAccount(principal, log, ResultInfo.CODE_GET_RES_FILES, true);
-        if (errinfo == null) {
-            try {
-                for (Map.Entry<String, String> entry : log.getDetail().getFiles().entrySet()) {
-                    if (entry.getKey().equals(name) && entry.getValue().contains(File.separatorChar + "video" + File.separatorChar)) {
-                        return createResponseEntity("application/x-mpegURL", NetFile.translateLocalVideoFileToHlsFile(entry.getValue()));
-                    }
-                }
-            } catch (Exception e) {
-                errinfo = e.getMessage();
-            }
+    @Value("${live.path}")
+    private String livepath;
+    @GetMapping("/{name}")
+    public ResponseEntity getVideoFile(Principal principal, @PathVariable("name") String name) {
+        String errinfo = "";
+        try {
+            return createResponseEntity("application/x-mpegURL", NetFile.getLiveFile(livepath, name));
+        } catch (Exception e) {
+            errinfo = e.getMessage();
         }
         return ResponseEntity.status(404).body(errinfo);
     }

@@ -19,6 +19,7 @@ public class ResourceSecurityConfigurer extends ResourceServerConfigurerAdapter 
                 .antMatchers("/blog/img/**", "/blog/video/**","/blog/cover/**").permitAll()
                 .antMatchers("/reply/list", "/reply/new").permitAll()
                 .antMatchers("/ref/**").permitAll()
+                .antMatchers("/live/**").permitAll()
                 .anyRequest()
                 .authenticated();
     }

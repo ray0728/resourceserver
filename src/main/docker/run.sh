@@ -36,5 +36,6 @@ java -Xmx300m -Xms300m                                     \
      -Dauth-server=$AUTH_URI                                \
      -Dspring.datasource.url=$DATABASE_URI                  \
      -Dresource.upload.dir.root=$UPLOAD_DIR_ROOT              \
+     -Dlive.path=$LIVE_DIR_ROOT                            \
      -Dspring.profiles.active=$PROFILE                      \
 -jar /usr/local/server/@project.build.finalName@.jar
