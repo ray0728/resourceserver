@@ -25,7 +25,7 @@ public class LiveController {
     public ResponseEntity getVideoFile(Principal principal, @PathVariable("name") String name) {
         String errinfo = "";
         try {
-            return createResponseEntity("application/x-mpegURL", NetFile.getLiveFile(livepath, name));
+            return createResponseEntity("application/x-mpegURL", NetFile.getDirAbsolutePath(livepath, name));
         } catch (Exception e) {
             errinfo = e.getMessage();
         }
@@ -33,6 +33,7 @@ public class LiveController {
     }
 
     private ResponseEntity createResponseEntity(String type, String filePath) throws IOException {
+        System.out.println(filePath);
         MediaType mediaType = MediaType.parseMediaType(type);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(mediaType);

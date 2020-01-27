@@ -133,10 +133,6 @@ public class NetFile {
         return absolutePath;
     }
 
-    public static String getLiveFile(String livepath, String file){
-        return livepath + File.separatorChar + file;
-    }
-
     public static Map<String, String> getFilesInfo(String dir, String subdir) {
         Map<String, String> fileInfoList = null;
         File root = new File(dir, subdir);
