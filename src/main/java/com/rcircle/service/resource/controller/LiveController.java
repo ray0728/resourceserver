@@ -44,7 +44,6 @@ public class LiveController {
     }
 
     private ResponseEntity createResponseEntity(String type, String filePath) throws IOException {
-        System.out.println(filePath);
         MediaType mediaType = MediaType.parseMediaType(type);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(mediaType);
