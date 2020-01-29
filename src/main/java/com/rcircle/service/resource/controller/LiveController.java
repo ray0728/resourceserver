@@ -32,6 +32,17 @@ public class LiveController {
         return ResponseEntity.status(404).body(errinfo);
     }
 
+    @GetMapping("/{resolution}/{name}")
+    public ResponseEntity getVideoFile(Principal principal, @PathVariable("resolution") String resolution, @PathVariable("name") String name) {
+        String errinfo = "";
+        try {
+            return createResponseEntity("application/x-mpegURL", NetFile.getDirAbsolutePath(livepath, resolution, name));
+        } catch (Exception e) {
+            errinfo = e.getMessage();
+        }
+        return ResponseEntity.status(404).body(errinfo);
+    }
+
     private ResponseEntity createResponseEntity(String type, String filePath) throws IOException {
         System.out.println(filePath);
         MediaType mediaType = MediaType.parseMediaType(type);
